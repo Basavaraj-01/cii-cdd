@@ -1,0 +1,47 @@
+name: cii-cdd pipeline
+on:
+push:
+branches:[main]
+workflow_despatch:
+
+jobs:
+build:
+runs-on:ubuntu-latest
+steps:
+-name:checkout code
+uses:actions/checkout@v4
+
+-name:set up Node.js
+uses:actions/setup@v4
+with:
+Node-version:"18"
+
+-name:install dependencies
+Run:npm install
+
+-name:build applications
+Run:echo "building the application"
+
+test"
+runs-on:ubuntu-latest
+needs:build
+
+-name:checkout code
+uses:actions/checkout@v4
+
+-name:Install dependencies
+Run:npm install
+
+-name:Run test
+Run:npm test
+
+deploy:
+runs-on:ubuntu-latest
+needs:latest
+
+-name:checkout code
+uses:actions/checkout@v4
+
+-name:deploy apllication
+Run:echo"deployin application"
+
